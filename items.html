@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+{% include 'header.html' %}
+{% block content %}
+<div id ="backg">
+	
+	<div class = 'pane'>
+
+		
+		<div class = 'header'>
+		<h1>{{ category.name }} Movies ({{ no_items }} movies)</h1>
+	</div>
+
+	
+
+
+<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+
+
+		{% for i in items %}
+    <div class = 'nameAndPrice'>
+		<span class = 'name'><a href='{{url_for('viewItem', category_name=category.name, item_title = i.title)}}' ><p>{{i.title}}</p></a></span>
+	</div>
+
+
+		{% endfor %}
+
+</div>
+{% endblock %}

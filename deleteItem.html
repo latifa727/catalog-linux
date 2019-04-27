@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+{% include 'header.html' %}
+{% block content %}
+<div id ="backg">
+
+<h1>Delete Item</h1>
+<h1> Are you sure you want to delete ? </h1>
+
+<form action="{{ url_for('deleteItem', item_title=item.title)}}" method = 'post'>
+
+<input type='submit', value = 'Submit'>
+
+</form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+{% include 'header.html' %}
+{% block content %}
+<div id ="backg">
+
+	<div class = 'pane'>
+		<div class = 'header'>
+		<h1>{{ item.title }} </h1>
+	</div>
+
+
+
+<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+
+
+	<div class = 'description'>
+		<span class = 'description'><p>{{item.description}}</p></span>
+	</div>
+	<div class = "editdeletepane">
+
+	<a href='{{url_for('editItem', item_title=item.title)}}' >Edit</a>
+	<a href='{{url_for('deleteItem', item_title=item.title)}}' >Delete</a>
+	</div>
+</div>
+
+{% endblock %}

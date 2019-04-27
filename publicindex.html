@@ -1,0 +1,61 @@
+{% extends "main.html" %}
+{% include 'header.html' %}
+{% block content %}
+
+<div id ="backg">
+
+
+	<table width="700">
+		<tr>
+			<td>
+					<div class = 'header'>
+		<h1>Categories</h1>
+	</div>
+
+		{% for i in categories %}
+    <div class = 'nameAndPrice'>
+
+		<span class = 'name'><a href='{{url_for('categoryitems',category_name = i.name)}}' ><p>{{i.name}}</p></a></span>
+
+	</div>
+
+
+		{% endfor %}
+
+			</td>
+			<td>
+					<div class = 'header'>
+		<h1>Latest Items</h1>
+	</div>
+
+
+
+<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+
+
+		{% for i in items %}
+    <div class = 'nameAndPrice'>
+		<span class = 'name'><p>{{i.title}} ({{i.cat_id}})</p></span>
+	</div>
+
+		{% endfor %}
+			</td>
+		</tr>
+
+	</table>
+
+		</div>
+
+{% endblock %}
